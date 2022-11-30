@@ -33,8 +33,10 @@ public class SumOfDigit {
     }
     public static int SumOfDigits(int a) {
         if (a == 0) return 0;
-        else if (a < 10) return a;
-        else return a % 10 + SumOfDigits(a / 10);
+         if (a < 10) return a;
+         else if (a>10)return a % 10 + SumOfDigits(a / 10);
+        if (a < 10) return a;
+        return SumOfDigits(a);
     }
 
     public static int SumOfDigitWithoutRecursion(int a) {
