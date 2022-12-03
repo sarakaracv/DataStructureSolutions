@@ -3,7 +3,8 @@ package org.example.leetCodeTask;
 public class BestTimeToBuyAndSellStock121 {
     public static void main(String[] args) {
     int [] nums= {12,15,10,25,32};
-        System.out.println(maxProfit2(nums));
+    BestTimeToBuyAndSellStock121 dnd= new BestTimeToBuyAndSellStock121();
+        System.out.println(dnd.maxProfit3(nums));
     }
     public static int maxProfit(int[] prices) {
         int min = Integer.MAX_VALUE, mp = 0;
@@ -44,6 +45,7 @@ public class BestTimeToBuyAndSellStock121 {
     }
 
     public int maxProfit3(int[] prices) {
+
         return prices.length > 0 ? helper(prices, 0, prices.length - 1)[0] : 0;
     }
 

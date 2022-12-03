@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -16,6 +18,7 @@ public class ListNode {
     ListNode left;
     ListNode right;
     ListNode root;
+    List<ListNode> children;
 
     public ListNode(int val) {
         this.val = val;
