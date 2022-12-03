@@ -6,6 +6,32 @@ public class BinaryTreeLevelOrderTraversal102 {
     public static void main(String[] args) {
 
     }
+    public List<List<Integer>> levelOrder(ListNode root) {
+        List<List<Integer>> sol = new ArrayList<>();
+        if(root == null){
+            return new ArrayList<>();
+        }
+        Set<Integer> set = new HashSet<>();
+        Queue<ListNode> q = new LinkedList<>();
+        // we have to pop all elements in the queue
+        q.add(root);
+        while(!q.isEmpty()){
+            List<Integer> list = new ArrayList<>();
+            int a = q.size();
+            for(int i=0;i<a;i++){
+                ListNode m = q.remove();
+                list.add(m.val);
+                if(m.left!=null)
+                    q.add(m.left);
+                if(m.right!=null)
+                    q.add(m.right);
+
+            }
+            sol.add(new ArrayList<>(list));
+
+        }
+        return sol;
+    }
     public List<List<Integer>> levelOrder1(ListNode root) {
         Queue<ListNode> queue = new LinkedList<ListNode>();
         List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
@@ -489,7 +515,7 @@ public class BinaryTreeLevelOrderTraversal102 {
         }
         return result;
     }
-    public List<List<Integer>> levelOrder(ListNode root) {
+    public List<List<Integer>> levelOrder22(ListNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         if(root==null) return result;
         ArrayList<ListNode> level = new ArrayList<ListNode>();
@@ -537,6 +563,92 @@ public class BinaryTreeLevelOrderTraversal102 {
                 break;
         }
         return res;
+    }
+
+    public List<List<Integer>> levelOrder23(ListNode root) {
+        List<List<Integer>> sol = new ArrayList<>();
+        if(root == null){
+            return new ArrayList<>();
+        }
+        Set<Integer> set = new HashSet<>();
+        Queue<ListNode> q = new LinkedList<>();
+        // we have to pop all elements in the queue
+        q.add(root);
+        while(!q.isEmpty()){
+            List<Integer> list = new ArrayList<>();
+            int a = q.size();
+            for(int i=0;i<a;i++){
+                ListNode m = q.remove();
+                list.add(m.val);
+                if(m.left!=null)
+                    q.add(m.left);
+                if(m.right!=null)
+                    q.add(m.right);
+
+            }
+            sol.add(new ArrayList<>(list));
+
+        }
+        return sol;
+    }
+    public List<List<Integer>> levelOrder24(ListNode root) {
+        Queue<Queue<ListNode>> q = new LinkedList<Queue<ListNode>>();
+        Queue<ListNode> level = new LinkedList<ListNode>();
+        level.add(root);
+        q.add(level);
+        List<List<Integer>> list = new LinkedList<List<Integer>>();
+        if (root == null)
+            return list;
+        while (!q.isEmpty())
+        {
+            Queue<ListNode> nextlev = new LinkedList<ListNode>();
+            level = q.poll();
+            List<Integer> lev = new LinkedList<Integer>();
+            while (!level.isEmpty())
+            {
+                ListNode node = level.poll();
+                if (node.left != null)
+                    nextlev.add(node.left);
+                if (node.right != null)
+                    nextlev.add(node.right);
+                lev.add(node.val);
+            }
+            list.add(lev);
+            if (!nextlev.isEmpty())
+                q.add(nextlev);
+        }
+        return list;
+    }
+    List<List<Integer>> list;
+    public List<List<Integer>> levelOrder25(ListNode root)
+    {
+
+        list = new ArrayList<List<Integer>>();
+        helper(root, 0);
+
+        return list;
+
+    }
+
+    private void helper(ListNode node, int level)
+    {
+
+        if(node == null)
+        {
+            return;
+        }
+
+        if(list.size() - 1 < level)
+        {
+            list.add(new ArrayList<Integer>());
+        }
+
+        list.get(level).add(node.val);
+
+        helper(node.left, level + 1);
+        helper(node.right, level + 1);
+
+
     }
 
 }
