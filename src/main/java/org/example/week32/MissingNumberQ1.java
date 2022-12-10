@@ -12,23 +12,16 @@ public class MissingNumberQ1 {
          System.out.println(missingNum3(arr));
     }
     public static int missingNum2(int[] arr) {
-
         Arrays.sort(arr);
-
         int sum = 0;
-
         for (int each : arr) {
             sum += each;
         }
-
         int sum2 = 0;
-
         for (int i = arr[0]; i < arr[arr.length - 1] + 1; i++) {
 
             sum2 += i;
-
         }
-
         return sum2 - sum;
 
     }
