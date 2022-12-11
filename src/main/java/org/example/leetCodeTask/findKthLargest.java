@@ -1,4 +1,4 @@
-package org.example.task1;
+package org.example.leetCodeTask;
 
 import java.util.Arrays;
 import java.util.Collections;
