@@ -1,11 +1,12 @@
 package org.example.leetCodeTask;
 
+import java.sql.Array;
 import java.util.*;
 
 public class LongestSubstringWithoutRepeatingCharacters3 {
     public static void main(String[] args) {
-        String as="abcabcbb";
-        System.out.println();
+        String as="pwwkew";
+        System.out.println(lengthOfLongestSubstring13(as));
     }
     public int lengthOfLongestSubstring1(String s) {
         int i = 0, j = 0, max = 0;
@@ -251,14 +252,14 @@ public class LongestSubstringWithoutRepeatingCharacters3 {
         }
         return max;
     }
-    public int lengthOfLongestSubstring13(String s) {
-        HashSet<Character> hash = new HashSet<Character>();
+    public static int lengthOfLongestSubstring13(String s) {
+        HashSet<Character> hash = new HashSet<>();
         int n = s.length();
         int max = 0;
         for(int i = 0; i < n; i++){
             int j = i;
             int an = 0;
-            while(j < n&&hash.add(s.charAt(j))){
+            while(j < n && hash.add(s.charAt(j))){
                 j++;
                 an++;
             }
@@ -312,11 +313,121 @@ public class LongestSubstringWithoutRepeatingCharacters3 {
         }
         return max_count;
     }
+
     public int lengthOfLongestSubstring18(String s) {
+
         TreeSet treeset = new TreeSet();
-        for(int i = 0; i < s.length(); i++){
-            treeset.add(""+s.charAt(i));
+        for (int i = 0; i < s.length(); i++) {
+
+            treeset.add("" + s.charAt(i));
         }
+
         return treeset.size();
+    }
+    public int lengthOfLongestSubstring19(String s) {
+        final int n = s.length();
+        int len = 0;
+        int [] repeat = new int[128];
+        for (int c = 0, j = 0, i = 0; j < n; j++) {
+            c = s.charAt(j);
+            i = Math.max(repeat[c], i);
+            len = Math.max(len, j - i +1);
+            repeat[c] = j+1;
+        }
+        return len;
+    }
+    public int lengthOfLongestSubstring20(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int longestSubLeng = 0;
+        String longestSubString = "";
+        String[] arrayS = s.split("");
+
+        for(String ss: arrayS){
+            if(!longestSubString.toString().contains(ss)){ //not in string yet
+                longestSubString += ss;
+            }else{
+                if(longestSubString.length() > longestSubLeng){
+                    longestSubLeng = longestSubString.length();
+                }
+                int index = longestSubString.indexOf(ss); //find where to start the new substring
+                longestSubString = longestSubString.substring(index+1,longestSubString.length()) + ss;
+            }
+        }
+        return Math.max(longestSubString.length(), longestSubLeng);
+    }
+    public int lengthOfLongestSubstring21(String s) {
+        int max=0;
+        String charList=new String();
+        for(int i=0;i<s.length();i++){
+            if(charList.indexOf(s.charAt(i))!=-1){
+                if(max<charList.length())
+                    max=charList.length();
+                charList=charList.substring(charList.indexOf(s.charAt(i))+1);
+            }
+            charList=charList+s.charAt(i);
+        }
+        if(max<charList.length()){
+            max=charList.length();
+        }
+        return s.length()==1?1:max;
+
+
+    }
+    public int lengthOfLongestSubstring22(String s) {
+        Map<Character, Integer> set = new HashMap<>();
+        int maxLength = 0;
+        int startPosition = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (set.containsKey(c)) {
+                int charLastPosition = set.get(c) + 1;
+                if (charLastPosition > startPosition) {
+                    startPosition = charLastPosition;
+                }
+                set.remove(c);
+            }
+            set.put(c, i);
+            int length = i - startPosition + 1;
+            if (length > maxLength) {
+                maxLength = length;
+            }
+        }
+        return maxLength;
+    }
+    public int lengthOfLongestSubstring23(String s) {
+        int n = s.length(), longest = 0;
+        int[] nextIndex = new int[128];
+
+        for (int r=0, l=0; r<n; r++) {
+            l = Math.max(nextIndex[s.charAt(r)], l);
+            longest = Math.max(longest, r - l + 1);
+            nextIndex[s.charAt(r)] = r + 1;
+        }
+
+        return longest;
+    }
+    public int lengthOfLongestSubstring24(String s) {
+        int max=0,pre=0;
+        for(int i=0;i<s.length();i++)
+        {
+            String str ="";
+            char c = s.charAt(i);
+            pre=0;
+            for(int j=i;j<s.length();j++)
+            {
+                if(str.contains(Character. toString(s.charAt(j))))
+                {
+                    break;
+                }
+                else{
+                    str=str+s.charAt(j);
+                    pre++;
+                }
+            }
+            max=Math.max(pre,max);
+        }
+        return max;
     }
 }
