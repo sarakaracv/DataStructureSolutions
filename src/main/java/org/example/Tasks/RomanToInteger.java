@@ -81,8 +81,7 @@ public static void main(String[] args) {
         }
         return res;
     }
-    public static int convertRomanToInt(String s)
-    {
+    public static int convertRomanToInt(String s) {
         Map<Character, Integer> map=new HashMap<>();
 
         map.put('I',1);
