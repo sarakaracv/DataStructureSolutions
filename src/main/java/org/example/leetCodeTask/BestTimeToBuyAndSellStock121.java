@@ -7,12 +7,13 @@ public class BestTimeToBuyAndSellStock121 {
         System.out.println(dnd.maxProfit3(nums));
     }
     public static int maxProfit(int[] prices) {
-        int min = Integer.MAX_VALUE, mp = 0;
-        for(int i: prices){
-            min = Math.min(min,i);
-            mp = Math.max(mp, i-min);
+        int minimum= Integer.MAX_VALUE;
+        int inc=0;
+        for (int each:prices){
+            minimum=Math.min(minimum,each);
+            inc=Math.max(inc,each-minimum);
         }
-        return mp;
+        return inc;
     }
 
 

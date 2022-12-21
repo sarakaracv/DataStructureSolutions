@@ -1,7 +1,5 @@
 package org.example.leetCodeWithNode;
 
-import org.example.course.LinkedList;
-
 import java.util.Stack;
 
 public class reverseLinkedList206 {
