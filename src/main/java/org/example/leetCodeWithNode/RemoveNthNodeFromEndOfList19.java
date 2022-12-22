@@ -8,14 +8,16 @@ public class RemoveNthNodeFromEndOfList19 {
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5};
         int num2 = 2;
-        ListNode listNode = new ListNode(3);
-        listNode.next = new ListNode(2);
-        listNode.next.next = new ListNode(0);
-        listNode.next.next.next = new ListNode(4);
-        listNode.next.next.next.next= new ListNode(5);
+      ListNode node= new ListNode();
+      node.add(1);
+      node.add(2);
+      node.add(3);
+      node.add(4);
+      node.add(5);
+      node.printNode();
 
        // listNode.next.next.next.next.next= listNode.next.next;
-        System.out.println(removeNthFromEnd1(listNode,num2));
+        System.out.println(removeNthFromEnd1(node,num2));
 
     }
 
