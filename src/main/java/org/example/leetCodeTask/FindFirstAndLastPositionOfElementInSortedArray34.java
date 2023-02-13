@@ -1,38 +1,46 @@
 package org.example.leetCodeTask;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class FindFirstAndLastPositionOfElementInSortedArray34 {
     public static void main(String[] args) {
-String aman= "aaabbccc";
 
-        System.out.println(repeatedStringMatch(aman,"a"));
+        int[]arr= {1,2,8,8,3,5};
+        System.out.println(Arrays.toString(searchRange1(arr,8)));
+
+    }
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans = {-1,-1};
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == target){
+                ans[0] = i;
+                while(i<nums.length && nums[i] == target){
+                    ans[1] = i;
+                    i++;
+
+                }
+                break;
+            }
+        }
+        return ans;
     }
 
-    static int repeatedStringMatch(String  a, String b) {
-        int initLen = a.length();
-        String aCopy = a;
-        int count = 1;
-        //multiply the string a until it will be >= to length of String b
-        while(initLen < b.length()){
-            aCopy = aCopy + a;
-            initLen = initLen + a.length();
-            count = count + 1;
-        }
+    public static int[] searchRange1(int[] nums, int target) {
+        int[] arr=new int[2];
+        int m=0;
+        for(int i=0;i<nums.length;i++)
+            if(nums[i]==target){
+                if(m==0)
+                    arr[0]=arr[1]=i;
+                else
+                    arr[1]=Math.max(arr[1], i);
+                m++;
+            }
+        if(m<1){
+            return new int[]{-1,-1};
+        } else return arr;
 
-        //check if a is substring of b
-        if(isSubString(aCopy , b) != -1){
-            return count;
-        }
-        if(isSubString(aCopy+a , b) != -1){
-            return count+1;
-        }
-
-
-        return -1;
-    }
-    private static int isSubString(String a, String b){
-        return a.indexOf(b);
     }
 }
