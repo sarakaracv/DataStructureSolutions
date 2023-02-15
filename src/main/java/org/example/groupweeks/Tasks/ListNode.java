@@ -5,7 +5,10 @@ import java.util.LinkedList;
 public class ListNode extends LinkedList<Integer> {
     ListNode headA;
     ListNode  headB;
-    ListNode  next;
+    public ListNode  next;
+    ListNode  fast;
+    ListNode  slow;
+
     ListNode  head;
     int node;
 
