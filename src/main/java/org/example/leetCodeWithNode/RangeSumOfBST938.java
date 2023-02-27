@@ -4,8 +4,13 @@ public class RangeSumOfBST938 {
     public static void main(String[] args) {
         RangeSumOfBST938 r = new RangeSumOfBST938();
         TreeNode node = new TreeNode();
-        int[] root = {10, 5, 15, 3, 7, 18};
-        node.val = root[0];
+        node.add(10);
+        node.add(5);
+        node.add(15);
+        node.add(3);
+        node.add(7);
+        node.add(18);
+
         System.out.println(r.rangeSumBST(node, 7, 15));
 
     }
