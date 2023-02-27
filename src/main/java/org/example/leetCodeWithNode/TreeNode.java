@@ -36,6 +36,7 @@ public class TreeNode {
                 insertNodeSorted(x, tree.right);
         }
     }
+
     public void insert(TreeNode x) {
         if (root == null) {
             root = x;
@@ -43,6 +44,7 @@ public class TreeNode {
         }
         insertNodeSorted(x, root);
     }
+
     private TreeNode addRecursive(TreeNode current, int value) {
         if (current == null) {
             return new TreeNode(value);
@@ -59,8 +61,34 @@ public class TreeNode {
 
         return current;
     }
+
     public void add(int value) {
         root = addRecursive(root, value);
     }
 
+    void insertTree(TreeNode newNode,int val) {
+
+        if (root == null) {
+            root.val =val;
+            return;
+        } else {
+            TreeNode current = root;
+            while (true) {
+                if (newNode.left.val < val) {
+                    if (current.left == null) {
+                        current.left = newNode;
+                        break;
+                    }
+                    current = current.left;
+                } else {
+                    if (current.right == null) {
+                        current.right = newNode;
+                        break;
+                    }
+                    current = current.right;
+                }
+            }
+        }
+
+    }
 }

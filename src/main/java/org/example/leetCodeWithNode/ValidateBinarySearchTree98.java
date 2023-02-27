@@ -8,6 +8,12 @@ import java.util.Stack;
 
 public class ValidateBinarySearchTree98 {
     public static void main(String[] args) {
+        ValidateBinarySearchTree98 v= new ValidateBinarySearchTree98();
+        TreeNode node= new TreeNode();
+        node.insertTree(node,5);
+        node.insertTree(node,8);
+        node.insertTree(node,10);
+        System.out.println(v.isValidBST(node));
 
     }
 
@@ -37,6 +43,7 @@ public class ValidateBinarySearchTree98 {
         if(root.val >=max || root.val<=min) return false;
         return helper(root.left, min, root.val) && helper(root.right, root.val, max);
     }
+
     private List<Integer> in = new ArrayList<>();
     public boolean isValidBST2(TreeNode root) {
         inorder(root);
