@@ -61,5 +61,20 @@ public class ValidateBinarySearchTree98 {
         in.add(root.val);
         inorder(root.right);
     }
+    public boolean isValidBST3(TreeNode root) {
+        Stack<TreeNode> stack= new Stack<>();
+        double leftChildVal= Double.MIN_VALUE;
+        while (!stack.isEmpty()||root!=null){
+            while (root!=null){
+            stack.push(root);
+            root=root.left;
+            }
+        root=stack.pop();
+        if (root.val<=leftChildVal)return false;
+        leftChildVal=root.val;
+        root=root.right;
+        }
+        return true;
+    }
+    }
 
-}
