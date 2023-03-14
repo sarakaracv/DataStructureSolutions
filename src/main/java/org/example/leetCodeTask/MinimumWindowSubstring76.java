@@ -1,6 +1,7 @@
 package org.example.leetCodeTask;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MinimumWindowSubstring76 {
     public static void main(String[] args) {
@@ -81,6 +82,65 @@ public class MinimumWindowSubstring76 {
             }
         }
         return answer;
+    }
+    public String minWindow0(String s, String t) {
+        // edge case
+        if (s == null || t == null || s.length() == 0 || t.length() == 0) {
+            return "";
+        }
+
+        // create a hashmap to store the frequency of characters in t
+        Map<Character, Integer> mapT = new HashMap<>();
+        for (char c : t.toCharArray()) {
+            mapT.put(c, mapT.getOrDefault(c, 0) + 1);
+        }
+
+        // initialize variables
+        int start = 0, end = 0, count = mapT.size(), minLength = Integer.MAX_VALUE, minStart = 0;
+
+        // iterate through the string s
+        while (end < s.length()) {
+            char c = s.charAt(end);
+
+            // if the character is in t, decrement its frequency in mapT
+            if (mapT.containsKey(c)) {
+                mapT.put(c, mapT.get(c) - 1);
+
+                // if the frequency becomes 0, decrement count
+                if (mapT.get(c) == 0) {
+                    count--;
+                }
+            }
+
+            // move the start pointer to right if the current window has all characters of t
+            while (count == 0) {
+                // update the minimum length and start index of the substring
+                if (end - start + 1 < minLength) {
+                    minLength = end - start + 1;
+                    minStart = start;
+                }
+
+                char startChar = s.charAt(start);
+
+                // if the character is in t, increment its frequency in mapT
+                if (mapT.containsKey(startChar)) {
+                    mapT.put(startChar, mapT.get(startChar) + 1);
+
+                    // if the frequency becomes greater than 0, increment count
+                    if (mapT.get(startChar) > 0) {
+                        count++;
+                    }
+                }
+
+                // move the start pointer to right
+                start++;
+            }
+
+            // move the end pointer to right
+            end++;
+        }
+
+        return minLength == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLength);
     }
 
 }
