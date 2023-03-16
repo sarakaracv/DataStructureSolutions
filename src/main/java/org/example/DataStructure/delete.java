@@ -1,11 +1,5 @@
 package org.example.DataStructure;
 
-import org.example.Node;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public class delete {
 
 //    public static LinkedList delete_node(LinkedList head, int key)

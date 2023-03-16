@@ -1,12 +1,14 @@
-package org.example;
+package org.example.leetCodeWithNode;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 
 public class Node {
     int val;
@@ -15,13 +17,19 @@ public class Node {
     Node next;
     Node tail;
     int size;
+    int key;
+    int value;
     Node left;
     Node right;
     Node root;
+    Node prev;
+    Node cur;
     List<Node> children;
 
-
-
+    public Node(int key, int value) {
+        this.key = key;
+        this.value = value;
+    }
 
     public Node(int val) {
         this.val = val;

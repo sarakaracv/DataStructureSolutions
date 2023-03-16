@@ -3,19 +3,8 @@ package org.example.leetCodeWithNode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LRUCache {
-//    public LRUCache(int capacity) {
-//
-//    }
-//
-//    public int get(int key) {
-//return -1;
-//    }
-//
-//    public void put(int key, int value) {
-//
-//    }
 
+public class LRUCache {
     /**
      * Design a data structure that follows the constraints of a Least Recently Used
      * (LRU) cache
@@ -26,8 +15,8 @@ public class LRUCache {
      */
 
     // Create doubly linkedlist
-    private Node head = new Node(0, 0);     // head node
-    private Node tail = new Node(0, 0);     // tail node
+    private Node head = new Node(0, new Node());     // head node
+    private Node tail = new Node(0, new Node());     // tail node
     // create map to store the key and its node
     private Map<Integer, Node> map = new HashMap<>();
     private int capacity;   // globally store the capacity
@@ -89,16 +78,5 @@ public class LRUCache {
         headNext.prev = node;
         node.prev = head;
     }
-}
-
-// The node class
- class Node {
-    Node next, prev;
-    int key, value;
-    Node(int key, int value) {
-        this.key = key;
-        this.value = value;
-    }
-
 
 }
