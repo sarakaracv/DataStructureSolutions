@@ -5,8 +5,6 @@ import java.util.Queue;
 
 public class PopulatingNextRightPointersInEachNode116 {
     public static void main(String[] args) {
-        Node node = new Node(1);
-
     }
 
     public Node connect(Node root) {
@@ -25,4 +23,21 @@ public class PopulatingNextRightPointersInEachNode116 {
         }
         return root;
     }
-}
+
+        public Node connect2(Node root) {
+            if (root == null) return null;
+            Node leftMost = root;
+            while (leftMost.left != null) {
+                Node head = leftMost;
+                while (head != null) {
+                    head.left.next = head.right;
+                    if (head.next != null) head.right.next = head.next.left;
+                    head = head.next;
+                }
+                leftMost = leftMost.left;
+            }
+            return root;
+        }
+    }
+
+
