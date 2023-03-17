@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Data
 
 public class Node {
+    public List<Node> neighbors;
     int val;
     int data;
     Node head;
@@ -26,14 +28,25 @@ public class Node {
     Node cur;
     List<Node> children;
 
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int val) {
+        this.val = val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int val, ArrayList<Node> neighbors) {
+        this.val = val;
+        this.neighbors = neighbors;
+    }
+
     public Node(int key, int value) {
         this.key = key;
         this.value = value;
     }
 
-    public Node(int val) {
-        this.val = val;
-    }
+
     public Node(int val, Node next) { this.val = val; this.next = next; }
 
     public void add(int data){
