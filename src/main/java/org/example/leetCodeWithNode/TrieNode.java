@@ -7,21 +7,22 @@ import java.util.Map;
 
 @Data
 public class TrieNode {
-    private TrieNode root;
+     TrieNode root;
+     TrieNode[] next;
     Map<Character, TrieNode> children;
     boolean isWord;
-
-
-    private TrieNode[] links;
-    private boolean isEnd;
+    int count;
+    TrieNode[] links;
+     boolean isEnd;
+     String word;
 
     public TrieNode() {
         root= new TrieNode();
         links = new TrieNode[26];
         children = new HashMap<>();
+        this.next = new TrieNode[26];
+        this.word = null;
     }
-
-
     public boolean containsKey(char c) {
         return links[c - 'a'] != null;
     }
