@@ -6,6 +6,9 @@ import java.util.Set;
 
 public class WordBreak139 {
     public static void main(String[] args) {
+        String cg="leetcode";Set<String> set= new HashSet<>();
+        set.add("leet"); set.add("code");
+        System.out.println(wordBreak3(cg,set));
 
     }
     public boolean wordBreak(String s, List<String> wordDict) {
@@ -23,7 +26,7 @@ public class WordBreak139 {
         }
         return false;
     }
-    public boolean wordBreak3(String s,Set<String> wordDict) {
+    public static boolean wordBreak3(String s,Set<String> wordDict) {
         if (s == null || s.length() == 0) return false;
         int n = s.length();
         boolean[] db = new boolean[n];
@@ -39,7 +42,7 @@ public class WordBreak139 {
         return db[n - 1];
     }
 
-        public boolean wordBreak3(String s, List<String> wordDict) {
+        public boolean wordBreak4(String s, List<String> wordDict) {
             Set<String> set = new HashSet<>(wordDict);
             boolean[] dp = new boolean[s.length() + 1];
             dp[0] = true;
