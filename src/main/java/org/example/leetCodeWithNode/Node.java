@@ -26,6 +26,7 @@ public class Node {
     Node root;
     Node prev;
     Node cur;
+    Node random;
     List<Node> children;
 
     public Node() {
@@ -48,6 +49,12 @@ public class Node {
 
 
     public Node(int val, Node next) { this.val = val; this.next = next; }
+
+    public Node(int val, Node next, Node random) {
+        this.val=val;
+        this.next=next;
+        this.random=random;
+    }
 
     public void add(int data){
 
