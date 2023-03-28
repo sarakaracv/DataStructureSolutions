@@ -7,6 +7,20 @@ public class TwoSum1 {
     public static void main(String[] args) {
 
     }
+    public int[] twoSum(int[] nums, int target) {
+
+        int[] result = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i]+nums[j] == target) {
+                    result[0] = i;
+                    result[1] = j;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
     public int[] twoSum1(int[] nums, int target) {
         HashMap<Integer, Integer> tracker = new HashMap<Integer, Integer>();
         int len = nums.length;
@@ -28,7 +42,7 @@ public class TwoSum1 {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
                     System.out.println(i + " " + j);
-                    return new int[] {i,j};
+                    return new int [] {i,j};
                 }
             }
         }
