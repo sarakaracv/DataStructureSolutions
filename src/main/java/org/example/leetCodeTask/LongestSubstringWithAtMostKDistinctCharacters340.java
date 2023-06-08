@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestSubstringWithAtMostKDistinctCharacters340 {
-        public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        public int lengthOfLongestSubstringKDistinct1(String s, int k) {
             if (s == null || s.length() == 0 || k == 0) {
                 return 0;
             }
@@ -35,4 +35,27 @@ public class LongestSubstringWithAtMostKDistinctCharacters340 {
 
             return maxLen;
         }
-    }
+        public int lengthOfLongestSubstringKDistinct2(String s, int k) {
+            if (s == null || s.length() == 0 || k == 0) {
+                return 0;
+            }
+            int[] freq = new int[256];
+            int left = 0, right = 0, maxLen = 0, numDistinct = 0;
+            while (right < s.length()) {
+                if (freq[s.charAt(right)] == 0) {
+                    numDistinct++;
+                }
+                freq[s.charAt(right)]++;
+                while (numDistinct > k) {
+                    freq[s.charAt(left)]--;
+                    if (freq[s.charAt(left)] == 0) {
+                        numDistinct--;
+                    }
+                    left++;
+                }
+                maxLen = Math.max(maxLen, right - left + 1);
+                right++;
+            }
+            return maxLen;
+        }
+}

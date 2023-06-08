@@ -8,10 +8,10 @@ import java.util.Set;
 public class ContainsDuplicate217 {
     public static void main(String[] args) {
         int[] nums = {2, 3, 3, 5, 6};
-        System.out.println();
+        System.out.println(containDuplicate1(nums));
     }
 
-    public boolean containDuplicate1(int[] nums) {
+    public static boolean containDuplicate1(int[] nums) {
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 1; i++) {
             if (nums[i] == nums[i+1]) {
